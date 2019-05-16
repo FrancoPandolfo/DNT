@@ -13,12 +13,16 @@ class Evento {
     def infraestructura = [[],[],[]]
     Integer costoTotalInfraestructura
     Set<Transporte>transportes=[]
+    //notas no va a poder ser una lista porque no puedo quitar una nota especifica
+    //puede ser una sola nota o un map con la key que sea numero de nota
     Set<String> notas = []
 
 
     //falta hacer el constructor?
 
     //---estas funciones puede que vayan en otras clases---
+
+    //ojo con funciones que devuelven null
 
     //esta funcion deberia tomar los datos que ingresa el admin y pasarselos a proveedor
     //o a otra clase para que llene un porveedor y dsp agregarlo al set
@@ -30,6 +34,23 @@ class Evento {
         info.costoTotal += proveedor.costoTotal
         info.presupuestoRestante -= proveedor.costoTotal
     }
+
+    def quitarProveedor(String name) {
+        Proveedor proveedor = buscarProveedor(name)
+        info.costoTotal -= proveedor.costoTotal
+        info.presupuestoRestante += proveedor.costoTotal
+        proveedores.removeElement(proveedor)
+    }
+
+    def buscarProveedor(String name){
+        for(prov in proveedores ){
+            if (prov.nombre == name) {
+                return prov
+            }
+        }
+        return null
+    }
+
 
 
     //carga el presupuesto que ingresa el usuario
@@ -49,6 +70,10 @@ class Evento {
 
     }
 
+    def quitarActividad(){
+
+    }
+
     ////esta funcion deberia tomar los datos que ingresa el admin y pasarselos a transporta
     //o a otra clase para que llene un transporte y dsp agregarlo al set
     def cargarTransporte(nombre,detalles){
@@ -56,9 +81,27 @@ class Evento {
         transportes.add(transporte)
     }
 
+    def quitarTransporte(String name){
+        Transporte transporte = buscarTransporte(name)
+        transportes.removeElement(transporte)
+    }
+
+    def buscarTransporte(String name){
+        for(trans in transportes ){
+            if (trans.nombre == name) {
+                return trans
+            }
+        }
+        return null
+    }
+
     //esta funion deberia revisar si el elemento ya esta en la lista, si esta no lo agrega
     //y suma al contador en la posicion
     def agregarInfraestructura(infraestructura){
+
+    }
+
+    def quitarInfraestructura(){
 
     }
 
@@ -81,8 +124,28 @@ class Evento {
         info.cantidadInvitados++
     }
 
+    //si el evento es privado?
+    def quitarInvitado(String name){
+        Usuario invitado = buscarInvitado(name)
+        info.invitados.removeElement(invitado)
+        info.cantidadInvitados--
+    }
+
+    def buscarInvitado(String name){
+        for(inv in info.invitados ){
+            if (inv.nombre == name) {
+                return inv
+            }
+        }
+        return null
+    }
+
     def agregarNota(String nota){
         notas.add(nota)
+    }
+
+    def quitarNota(){
+
     }
 
 
