@@ -13,6 +13,7 @@ class Evento {
     def infraestructura = [[],[],[]]
     Integer costoTotalInfraestructura
     Set<Transporte>transportes=[]
+    Set<String> notas = []
 
 
     //falta hacer el constructor?
@@ -73,6 +74,17 @@ class Evento {
             costoTotalProveedores += proveedor.costoTotal
         }
     }
+
+    //agrega un usuario a la lista de invitados del evento y aumento contador de invitados
+    def agregarInvitado(Usuario invitado){
+        info.invitados.add(invitado)
+        info.cantidadInvitados++
+    }
+
+    def agregarNota(String nota){
+        notas.add(nota)
+    }
+
 
     static hasMany=[
             proveedores:Proveedor,

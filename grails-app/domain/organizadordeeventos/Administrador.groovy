@@ -5,6 +5,11 @@ class Administrador {
     //la diferencia es que va a poder dar uso de otros metodos
     //es un estado pero restringido a un evento. como va cambiando de estado?
 
+    //lista de cosas a hacer para el evento
+    Set<String>objetivos = []
+
+    //nombrar administrador
+
     //agregar invitado
 
     //agregar proveedor

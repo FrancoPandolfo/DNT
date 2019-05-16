@@ -4,12 +4,17 @@ package organizadordeeventos
 class InfoEvento {
 
     Integer presupuesto
+    Set<Usuario>invitados=[]
     Integer cantidadInvitados
     Integer costoTotal
     Integer presupuestoRestante
     String lugar
 
     //falta el constructor?
+
+    static hasMany=[
+          usuarios:Usuario
+    ]
 
     static constraints = {
 
