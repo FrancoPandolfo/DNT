@@ -2,13 +2,20 @@ package organizadordeeventos
 
 class Evento {
 
+    //los costos podrian estar todos dentro de una clase costos?
     InfoEvento info
     Set<Proveedor>proveedores=[]
+    Integer costoTotalProveedores
     //puede que haya una funcionalidad de calendario que te de una lista de horarios o algo asi
     def cronograma = [:]
-    //la primera lista va a contener la infraestructura, la segunda la cantidad de cada infraestructura
-    def infraestructura = [[],[]]
+    //la primera lista va a contener la infraestructura, la segunda la cantidad de cada infraestructura,
+    //la tercera el costo. uso lista de listas en lugar de map para poder agregar repetidos
+    def infraestructura = [[],[],[]]
+    Integer costoTotalInfraestructura
     Set<Transporte>transportes=[]
+
+
+    //falta hacer el constructor?
 
     //---estas funciones puede que vayan en otras clases---
 
@@ -18,6 +25,15 @@ class Evento {
         //los datos se los puedo pasar por parametro a proveedor
         Proveedor proveedor = new Proveedor()
         proveedores.add(proveedor)
+        proveedor.calcularCostoTotal()
+        info.costoTotal += proveedor.costoTotal
+        info.presupuestoRestante -= proveedor.costoTotal
+    }
+
+
+    //carga el presupuesto que ingresa el usuario
+    def cargarPresupuesto(Integer presupuesto){
+        info.presupuesto = presupuesto
     }
 
 
@@ -45,8 +61,22 @@ class Evento {
 
     }
 
+    def calcularTotalInfraestructura(){
+        for (costo in infraestructura[2]) {
+            costoTotalInfraestructura += costo
+        }
+    }
+
+    //suma total del costo de todos los proveedores
+    def calcularCostoTotalProveedores(){
+        for (proveedor in proveedores){
+            costoTotalProveedores += proveedor.costoTotal
+        }
+    }
+
     static hasMany=[
-            proveedores:Proveedor
+            proveedores:Proveedor,
+            transportes:Transporte
     ]
 
     static constraints = {

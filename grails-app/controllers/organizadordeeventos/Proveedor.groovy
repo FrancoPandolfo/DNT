@@ -9,8 +9,14 @@ class Proveedor {
     //def bebida = [:]
     Integer costoTotal
 
-    def calcularCostoTotal(){
+    //falta hacer el constructor?
 
+    //calcula el costo total del proveedor
+    def calcularCostoTotal(){
+        costoTotal = 0
+        for (costo in compra){
+            costoTotal += costo.value[1]
+        }
     }
 
 }

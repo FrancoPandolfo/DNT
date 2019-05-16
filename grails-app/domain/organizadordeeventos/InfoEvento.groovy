@@ -9,6 +9,8 @@ class InfoEvento {
     Integer presupuestoRestante
     String lugar
 
+    //falta el constructor?
+
     static constraints = {
 
         presupuesto blank:false, nullable:false, min: 0
