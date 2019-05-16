@@ -4,6 +4,7 @@ package organizadordeeventos
 class InfoEvento {
 
     Integer presupuesto
+    //la lista de invitados puede que sirva que este en Evento
     Set<Usuario>invitados=[]
     Integer cantidadInvitados
     Integer costoTotal
