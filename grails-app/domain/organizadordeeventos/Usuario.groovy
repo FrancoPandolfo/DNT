@@ -21,6 +21,20 @@ class Usuario {
         eventos.add(evento)
     }
 
+    def quitarEvento(String name){
+        Evento evento = buscarEvento(name)
+        eventos.removeElement(evento)
+    }
+
+    def buscarEvento(String name){
+        for(even in eventos ){
+            if (even.nombre == name) {
+                return even
+            }
+        }
+        return null
+    }
+
 
     static hasMany=[
             eventos:Evento

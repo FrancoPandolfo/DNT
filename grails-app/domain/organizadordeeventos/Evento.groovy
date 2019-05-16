@@ -3,6 +3,7 @@ package organizadordeeventos
 class Evento {
 
     //los costos podrian estar todos dentro de una clase costos?
+    String nombre
     InfoEvento info
     Set<Proveedor>proveedores=[]
     Integer costoTotalProveedores
