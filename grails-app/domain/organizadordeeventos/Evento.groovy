@@ -16,7 +16,7 @@ class Evento {
     Set<Transporte>transportes=[]
     //notas no va a poder ser una lista porque no puedo quitar una nota especifica
     //puede ser una sola nota o un map con la key que sea numero de nota
-    Set<String> notas = []
+    def notas = [:]
 
 
     //falta hacer el constructor?
@@ -142,7 +142,7 @@ class Evento {
     }
 
     def agregarNota(String nota){
-        notas.add(nota)
+
     }
 
     def quitarNota(){
