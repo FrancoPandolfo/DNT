@@ -9,6 +9,7 @@ class Usuario {
     String apellido
     String mail
     Set<Evento> eventos = []
+    Buscador buscador
 
     //falta hacer el constructor?
 
@@ -22,17 +23,9 @@ class Usuario {
     }
 
     def quitarEvento(String name){
-        Evento evento = buscarEvento(name)
+        Evento evento = buscador.buscarEvento(name,eventos)
+        if(evento == null){throw new IllegalArgumentException("no se encontro evento con ese nombre")}
         eventos.removeElement(evento)
-    }
-
-    def buscarEvento(String name){
-        for(even in eventos ){
-            if (even.nombre == name) {
-                return even
-            }
-        }
-        return null
     }
 
 

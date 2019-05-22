@@ -5,13 +5,19 @@ class Proveedor {
 
     String nombre
     //nombre elemento cantidad y costo
-    Map<String, Tuple> compra = new HashMap<>()
+    Set<Item> compra = []
     //def comida = [:]
     //def bebida = [:]
     Integer costoTotal
 
-    //falta hacer el constructor?
+    Proveedor(String name){
+        nombre = name
+    }
 
+
+    def nuevaCompra(){
+    }
+/*
     //calcula el costo total del proveedor
     def calcularCostoTotal(){
         costoTotal = 0
@@ -19,5 +25,5 @@ class Proveedor {
             costoTotal += costo.value[1]
         }
     }
-
+*/
 }

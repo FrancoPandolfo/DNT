@@ -1,10 +1,9 @@
 package organizadordeeventos
 
-class Transporte {
-
+class Actividad {
     String nombre
+    //horario
     String descripcion
-
-
-    //falta hacer el constructor?
+    static constraints = {
+    }
 }
