@@ -9,13 +9,11 @@ class Evento {
     Cronograma cronograma
     //la primera lista va a contener la infraestructura, la segunda la cantidad de cada infraestructura,
     //la tercera el costo. uso lista de listas en lugar de map para poder agregar repetidos
-    Infraestructura infraestructura
     //notas no va a poder ser una lista porque no puedo quitar una nota especifica
     //puede ser una sola nota o un map con la key que sea numero de nota
     Set<Tarea> tareas = []
     Integer gastoTotal
     Presupuesto presupuesto
-    CalculadorGastos calculador
     Buscador buscador
 
 
@@ -81,13 +79,23 @@ class Evento {
     def tareaCompletada(String nombre){
         Tarea tarea = buscador.buscarTarea(nombre,tareas)
         if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
-        tarea.completarse()
+        tarea.completa()
     }
 
     def quitarTarea(String nombre){
         Tarea tarea = buscador.buscarTarea(nombre,tareas)
         if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
         tareas.removeElement(tarea)
+    }
+
+    def calculoAgregarCompra(Presupuesto presupuesto, Item compra){
+        gastoTotal += compra.costo
+        presupuesto.remanente -= compra.costo
+    }
+
+    def calculoQuitarProveedor(Presupuesto presupuesto, Proveedor proveedor){
+        gastoTotal -= proveedor.costoTotal
+        presupuesto.remanente += proveedor.costoTotal
     }
 
     /*

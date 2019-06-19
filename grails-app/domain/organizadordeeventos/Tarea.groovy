@@ -4,14 +4,26 @@ class Tarea {
 
     String nombre
     String descripcion
-    boolean completada
+    Estado estado = Estado.INCOMPLETA
 
-    Tarea(){
-        completada = false
+    enum Estado{
+        COMPLETA,INCOMPLETA,ENPROCESO
     }
 
-    def completarse(){
-        completada = true
+    Tarea(){
+        estado = Estado.INCOMPLETA
+    }
+
+    def completa(){
+        estado = Estado.COMPLETA
+    }
+
+    def enProceso(){
+        estado = Estado.ENPROCESO
+    }
+
+    def incompleta(){
+        estado = Estado.INCOMPLETA
     }
     static constraints = {
     }
