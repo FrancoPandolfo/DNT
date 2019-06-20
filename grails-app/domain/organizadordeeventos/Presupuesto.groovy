@@ -2,11 +2,16 @@ package organizadordeeventos
 
 class Presupuesto {
 
-    Integer total
-    Integer remanente
+    Dinero total
+    Dinero remanente
 
-    def cargarPresupuesto(Integer presupuesto){
-        total = presupuesto
+    def cargarPresupuesto(Integer presupuesto) {
+        total.setCantidad(presupuesto)
+        remanente.setCantidad(presupuesto)
+    }
+
+    getRemanente(){
+        return remanente
     }
 
     static constraints = {

@@ -2,61 +2,101 @@ package organizadordeeventos
 
 class Evento {
 
-    //los costos podrian estar todos dentro de una clase costos?
     String nombre
     Set<Proveedor>proveedores=[]
     //puede que haya una funcionalidad de calendario que te de una lista de horarios o algo asi
     Cronograma cronograma
-    //la primera lista va a contener la infraestructura, la segunda la cantidad de cada infraestructura,
-    //la tercera el costo. uso lista de listas en lugar de map para poder agregar repetidos
-    //notas no va a poder ser una lista porque no puedo quitar una nota especifica
-    //puede ser una sola nota o un map con la key que sea numero de nota
     Set<Tarea> tareas = []
-    Integer gastoTotal
+    Dinero gastoTotal
     Presupuesto presupuesto
     Buscador buscador
 
+    Set<Usuario> usuarios = []
+    Set<Administrador> administradores = []
 
-    //falta hacer el constructor?
+    Evento(String name){
+        nombre = name
+    }
 
     //esta funcion deberia tomar los datos que ingresa el admin y pasarselos a proveedor
     //o a otra clase para que llene un porveedor y dsp agregarlo al set
-    def cargarProveedor(String nombre){
+    def agregarProveedor(Proveedor proveedor){
         //los datos se los puedo pasar por parametro a proveedor
-        Proveedor proveedor = new Proveedor(nombre)
         proveedores.add(proveedor)
     }
 
-    def agregarCompraAProveedor(String Nombre){
-        Proveedor proveedor = buscarProveedor(nombre)
-        if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
+    //agregue a la funcion los parametros de Item, ver Item!
+    def agregarCompraAProveedor(Proveedor proveedor,String nombre, Integer cantidad, Integer costo, Item.Tipo tipo){
+        //Proveedor proveedor = buscarProveedor(nombre)
+        //if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
         //la compra la ingresa el usuario
-        Item compra = proveedor.nuevaCompra()
-        calculador.calculoAgregarCompra(presupuesto,compra,gastoTotal)
+        Item compra = new Item(nombre,cantidad,costo,tipo)
+        proveedor.nuevaCompra(compra)
+        calculoAgregarCompra(compra)
     }
 
-    def quitarProveedor(String name) {
-        Proveedor proveedor = buscador.buscarProveedor(name,proveedores)
-        if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
-        calculador.calculoQuitarProveedor(presupuesto,proveedor,gastoTotal)
+    def quitarProveedor(Proveedor proveedor) {
+        //Proveedor proveedor = buscador.buscarProveedor(name,proveedores)
+        //if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
+        calculoQuitarProveedor(proveedor)
         proveedores.removeElement(proveedor)
     }
 
     //carga el presupuesto que ingresa el usuario
-    def cargarPresupuesto(Integer presupuesto){
-        presupuesto.cargarPresupuesto()
+    def cargarPresupuesto(Integer presu){
+        presupuesto.cargarPresupuesto(presu)
     }
 
 
     //esta funcion agrega una actividad al cronograma el usuario tiene que ingresar los datos
-    def agregarActividad(){
-        cronograma.agregarActividad()
+    def agregarActividad(String nombre, String descripcion, Date inicio, Date fin){
+        Actividad actividad = new Actividad(nombre,descripcion,inicio,fin)
+        cronograma.agregarActividad(actividad)
     }
 
-    def quitarActividad(String nombre){
-        cronograma.quitarActividad(nombre)
+    def quitarActividad(Actividad actividad){
+        cronograma.quitarActividad(actividad)
     }
 
+    //los datos los carga el usuario
+    def agregarTarea(String nombre,String descripcion){
+        Tarea tarea = new Tarea(nombre,descripcion)
+        tareas.add(tarea)
+    }
+
+    def tareaCompletada(Tarea tarea){
+        //Tarea tarea = buscador.buscarTarea(nombre,tareas)
+        //if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
+        tarea.completa()
+    }
+
+    def tareaEnProceso(Tarea tarea){
+        //Tarea tarea = buscador.buscarTarea(nombre,tareas)
+        //if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
+        tarea.enProceso()
+    }
+
+    def quitarTarea(Tarea tarea){
+        //Tarea tarea = buscador.buscarTarea(nombre,tareas)
+        //if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
+        tareas.removeElement(tarea)
+    }
+
+    def calculoAgregarCompra(Item compra){
+        Dinero costo = compra.getCosto()
+        gastoTotal.sumar(costo.getCantidad())
+        Dinero remanente = presupuesto.getRemanente()
+        remanente.restar(costo.getCantidad())
+    }
+
+    def calculoQuitarProveedor(Proveedor proveedor){
+        Integer costoTotal = proveedor.getCostoTotal()
+        gastoTotal.restar(costoTotal)
+        Dinero remanente = presupuesto.getRemanente()
+        remanente.sumar(costoTotal)
+    }
+
+    /*
     //esta funion deberia revisar si el elemento ya esta en la lista, si esta no lo agrega
     //y suma al contador en la posicion
     //el usuario debe ingresar los datos del item de infraestructura
@@ -69,34 +109,7 @@ class Evento {
         Item infra = infraestructura.quitarInfraestructura(nombre)
         calculador.calculoQuitarInfraestructura(presupuesto,infra,gastoTotal)
     }
-
-    //los datos los carga el usuario
-    def agregarTarea(){
-        Tarea tarea = new Tarea()
-        tareas.add(tarea)
-    }
-
-    def tareaCompletada(String nombre){
-        Tarea tarea = buscador.buscarTarea(nombre,tareas)
-        if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
-        tarea.completa()
-    }
-
-    def quitarTarea(String nombre){
-        Tarea tarea = buscador.buscarTarea(nombre,tareas)
-        if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
-        tareas.removeElement(tarea)
-    }
-
-    def calculoAgregarCompra(Presupuesto presupuesto, Item compra){
-        gastoTotal += compra.costo
-        presupuesto.remanente -= compra.costo
-    }
-
-    def calculoQuitarProveedor(Presupuesto presupuesto, Proveedor proveedor){
-        gastoTotal -= proveedor.costoTotal
-        presupuesto.remanente += proveedor.costoTotal
-    }
+    */
 
     /*
    ////esta funcion deberia tomar los datos que ingresa el admin y pasarselos a transporta
@@ -157,7 +170,9 @@ class Evento {
     static hasMany=[
             proveedores:Proveedor,
             cronograma:Actividad,
-            tareas:Tarea
+            tareas:Tarea,
+            usuarios:Usuario,
+            administradores:Administrador
     ]
 
     static constraints = {

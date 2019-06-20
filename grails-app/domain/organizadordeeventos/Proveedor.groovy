@@ -5,17 +5,19 @@ class Proveedor {
 
     String nombre
     //nombre elemento cantidad y costo
-    Set<Item> compra = []
-    //def comida = [:]
-    //def bebida = [:]
-    Integer costoTotal
+    Set<Item> compras = []
+    Dinero costoTotal
 
     Proveedor(String name){
         nombre = name
     }
 
+    getCostoTotal(){
+        return costoTotal.getCantidad()
+    }
 
-    def nuevaCompra(){
+    def nuevaCompra(Item compra){
+        compras.add(compra)
     }
 /*
     //calcula el costo total del proveedor

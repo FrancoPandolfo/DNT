@@ -9,28 +9,44 @@ class Usuario {
     String apellido
     String mail
     Set<Evento> eventos = []
+    Set<Proveedor> proveedores = []
     Buscador buscador
 
-    //falta hacer el constructor?
+    Usuario(String name, String sername, String email){
+        nombre = name
+        apellido = sername
+        mail = email
+    }
 
     //cuando crea el evento se vuelve admin del evento
-    def crearEvento(){
-
+    def crearEvento(String nombre){
+        Evento evento = new Evento(nombre)
+        eventos.add(evento)
+        Administrador admin = new Administrador(this, evento)
+        evento.usuarios.add(this)
+        evento.administradores.add(admin)
     }
+
+    cargarProveedor(String nombre){
+        Proveedor proveedor = new Proveedor(nombre)
+        proveedores.add(proveedor)
+    }
+
 
     def agregarEvento(Evento evento){
         eventos.add(evento)
     }
 
-    def quitarEvento(String name){
-        Evento evento = buscador.buscarEvento(name,eventos)
-        if(evento == null){throw new IllegalArgumentException("no se encontro evento con ese nombre")}
+    def quitarEvento(Evento evento){
+        //Evento evento = buscador.buscarEvento(name,eventos)
+        //if(evento == null){throw new IllegalArgumentException("no se encontro evento con ese nombre")}
         eventos.removeElement(evento)
     }
 
 
     static hasMany=[
-            eventos:Evento
+            eventos:Evento,
+            proveedores:Proveedor
     ]
 
     static constraints = {

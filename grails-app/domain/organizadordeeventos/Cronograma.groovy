@@ -6,14 +6,13 @@ class Cronograma {
     Buscador buscador
 
 
-    def agregarActividad(){
-        Actividad actividad = new Actividad()
+    def agregarActividad(Actividad actividad){
         actividades.add(actividad)
     }
 
-    def quitarActividad(String nombre){
-        Actividad actividad = buscador.buscarActividad(nombre,actividades)
-        if(actividad == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
+    def quitarActividad(Actividad actividad){
+        //Actividad actividad = buscador.buscarActividad(nombre,actividades)
+        //if(actividad == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
         actividades.removeElement(actividad)
     }
 

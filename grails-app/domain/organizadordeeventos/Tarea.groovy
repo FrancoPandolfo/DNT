@@ -10,7 +10,9 @@ class Tarea {
         COMPLETA,INCOMPLETA,ENPROCESO
     }
 
-    Tarea(){
+    Tarea(String name, String descrip){
+        nombre = name
+        descripcion = descrip
         estado = Estado.INCOMPLETA
     }
 
