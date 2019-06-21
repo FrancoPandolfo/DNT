@@ -15,7 +15,7 @@ class Item {
     }
 
     getCosto(){
-        return costo
+        return costo.getCantidad()
     }
     enum Tipo{
         COMIDA,BEBIDA,INFRAESTRUCTURA,OTROS

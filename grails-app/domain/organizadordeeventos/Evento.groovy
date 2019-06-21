@@ -83,10 +83,10 @@ class Evento {
     }
 
     def calculoAgregarCompra(Item compra){
-        Dinero costo = compra.getCosto()
-        gastoTotal.sumar(costo.getCantidad())
+        Integer costo = compra.getCosto()
+        gastoTotal.sumar(costo)
         Dinero remanente = presupuesto.getRemanente()
-        remanente.restar(costo.getCantidad())
+        remanente.restar(costo)
     }
 
     def calculoQuitarProveedor(Proveedor proveedor){
