@@ -4,19 +4,19 @@ class Dinero {
 
     Integer cantidad
 
-    getCantidad(){
+   def getCantidad(){
         return cantidad
     }
 
-    setCantidad(Integer cant){
+    def setCantidad(Integer cant){
         cantidad = cant
     }
 
-    sumar(Integer cant){
+    def sumar(Integer cant){
         cantidad += cant
     }
 
-    restar(Integer cant){
+    def restar(Integer cant){
         cantidad -= cant
     }
     static constraints = {

@@ -14,7 +14,7 @@ class Item {
         tipo = type
     }
 
-    getCosto(){
+    def getCosto(){
         return costo.getCantidad()
     }
     enum Tipo{

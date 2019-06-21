@@ -10,7 +10,7 @@ class Presupuesto {
         remanente.setCantidad(presupuesto)
     }
 
-    getRemanente(){
+    def getRemanente(){
         return remanente
     }
 

@@ -12,7 +12,7 @@ class Proveedor {
         nombre = name
     }
 
-    getCostoTotal(){
+    def getCostoTotal(){
         return costoTotal.getCantidad()
     }
 

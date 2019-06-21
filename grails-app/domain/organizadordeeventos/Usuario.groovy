@@ -27,7 +27,7 @@ class Usuario {
         evento.administradores.add(admin)
     }
 
-    cargarProveedor(String nombre){
+    def cargarProveedor(String nombre){
         Proveedor proveedor = new Proveedor(nombre)
         proveedores.add(proveedor)
     }
