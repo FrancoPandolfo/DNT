@@ -3,8 +3,6 @@ package organizadordeeventos
 class Cronograma {
 
     Set<Actividad> actividades =[]
-    Buscador buscador
-
 
     def agregarActividad(Actividad actividad){
         actividades.add(actividad)

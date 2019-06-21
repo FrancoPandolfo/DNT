@@ -10,7 +10,6 @@ class Usuario {
     String mail
     Set<Evento> eventos = []
     Set<Proveedor> proveedores = []
-    Buscador buscador
 
     Usuario(String name, String sername, String email){
         nombre = name

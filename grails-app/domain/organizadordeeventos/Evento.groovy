@@ -9,8 +9,6 @@ class Evento {
     Set<Tarea> tareas = []
     Dinero gastoTotal
     Presupuesto presupuesto
-    Buscador buscador
-
     Set<Usuario> usuarios = []
     Set<Administrador> administradores = []
 
