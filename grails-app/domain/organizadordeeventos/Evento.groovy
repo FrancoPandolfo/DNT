@@ -105,6 +105,7 @@ class Evento {
     }
 
     //¿donde guardamos la propuesta?
+    //las propuestas porahi es mejor que solo la puedan hacer los admins
     def proponerPresupuesto(BigDecimal presu){
         Dinero propuesta = new Dinero(presu)
         presupuestosPosibles.add(propuesta)
