@@ -3,6 +3,8 @@ package organizadordeeventos
 class Evento {
 
     String nombre
+    //por ahora locacion es un string
+    String locacion
     Set<Proveedor>proveedores=[]
     //puede que haya una funcionalidad de calendario que te de una lista de horarios o algo asi
     Cronograma cronograma
@@ -141,6 +143,10 @@ class Evento {
 
     def quitarPosibleFecha(Date date){
         fechasPosibles.removeElement(date)
+    }
+
+    def fijarLocacion(String location){
+        locacion = location
     }
 
 
