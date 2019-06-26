@@ -13,6 +13,7 @@ class Evento {
     Set<Administrador> administradores = []
     Set<Nota> notas = []
     Date fecha
+    Set<Date> fechasPosibles = []
 
     Evento(String name){
         nombre = name
@@ -107,7 +108,17 @@ class Evento {
         Dinero propuesta = new Dinero(presu)
     }
 
+    def fijarFecha(Date date){
+        fecha = date
+    }
 
+    def agregarPosibleFecha(Date date){
+        fechasPosibles.add(date)
+    }
+
+    def quitarPosibleFecha(Date date){
+        fechasPosibles.removeElement(date)
+    }
 
 
     /*
