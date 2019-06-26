@@ -145,10 +145,6 @@ class Evento {
         fechasPosibles.removeElement(date)
     }
 
-    def fijarLocacion(String location){
-        locacion = location
-    }
-
 
     /*
     //esta funion deberia revisar si el elemento ya esta en la lista, si esta no lo agrega

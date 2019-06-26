@@ -50,6 +50,14 @@ class Administrador extends Usuario {
         evento.presupuesto.setRemanente(remanente)
     }
 
+    def fijarLocacion(String location){
+        evento.locacion = location
+    }
+
+    def borrarLocacion(){
+        evento.locacion = ""
+    }
+
     static constraints = {
       evento nullable: false
     }
