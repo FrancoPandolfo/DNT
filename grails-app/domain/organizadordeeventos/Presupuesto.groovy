@@ -15,5 +15,6 @@ class Presupuesto {
     }
 
     static constraints = {
+      total blank: false, nullable: false, min: 0
     }
 }

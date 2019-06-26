@@ -28,5 +28,6 @@ class Tarea {
         estado = Estado.INCOMPLETA
     }
     static constraints = {
+      nombre blank:false, nullable: false
     }
 }

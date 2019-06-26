@@ -11,5 +11,6 @@ class Administrador extends Usuario {
 
     }
     static constraints = {
+      evento nullable: false
     }
 }

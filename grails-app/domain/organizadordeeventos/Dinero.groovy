@@ -1,24 +1,34 @@
 package organizadordeeventos
+import java.text.DecimalFormat
+@groovy.transform.Tostring
+@groovy.transform.EqualsAndHashCode
+class Dinero implements Comparable<Dinero>, Serializable {
 
-class Dinero {
+    BigDecimal cantidad
 
-    Integer cantidad
-
-   def getCantidad(){
-        return cantidad
+    Dinero(BigDecimal cantidad){
+      if (monto < 0) {
+        throw new IllegalArgumentException("Monto negativo")
+      }
+      this.cantidad = cantidad
     }
 
-    def setCantidad(Integer cant){
-        cantidad = cant
+    @Override
+    int compareTo(Dinero that){
+      int iguales = 0
+      int comparacion = this.monto.compareTo(that.monto)
+      if(comparacion != iguales) comparacion
+      iguales
     }
 
-    def sumar(Integer cant){
-        cantidad += cant
+    Dinero plus(Dinero otro){
+      new Dinero(this.cantidad + otro.cantidad)
     }
 
-    def restar(Integer cant){
-        cantidad -= cant
+    Dinero minus(Dinero otro){
+        new Dinero(this.cantidad - otro.cantidad)
     }
     static constraints = {
+      cantidad blank: false, nullable: false, min
     }
 }

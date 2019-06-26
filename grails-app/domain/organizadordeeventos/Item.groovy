@@ -22,5 +22,8 @@ class Item {
     }
 
     static constraints = {
+      nombre blank:false, nullable:false
+      cantidad blank:false, nullable:false, min: 0
+      costo blank:false, nullable:falses
     }
 }
