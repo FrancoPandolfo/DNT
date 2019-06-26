@@ -10,11 +10,13 @@ class Proveedor {
 
     Proveedor(String name){
         nombre = name
+        Dinero costo = new Dinero(0.0)
+        costoTotal = costo
     }
 
-    def getCostoTotal(){
-        return costoTotal.getCantidad()
-    }
+
+    //def getCostoTotal(){
+    //}
 
     def nuevaCompra(Item compra){
         compras.add(compra)

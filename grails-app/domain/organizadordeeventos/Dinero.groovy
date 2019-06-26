@@ -5,7 +5,7 @@ class Dinero implements Comparable<Dinero>, Serializable {
     BigDecimal cantidad
 
     Dinero(BigDecimal cantidad){
-      if (monto < 0) {
+      if (cantidad < 0) {
         throw new IllegalArgumentException("Monto negativo")
       }
       this.cantidad = cantidad
@@ -14,7 +14,7 @@ class Dinero implements Comparable<Dinero>, Serializable {
     @Override
     int compareTo(Dinero that){
       int iguales = 0
-      int comparacion = this.monto.compareTo(that.monto)
+      int comparacion = this.cantidad.compareTo(that.cantidad)
       if(comparacion != iguales) comparacion
       iguales
     }
@@ -27,6 +27,6 @@ class Dinero implements Comparable<Dinero>, Serializable {
         new Dinero(this.cantidad - otro.cantidad)
     }
     static constraints = {
-      cantidad blank: false, nullable: false, min: 0.0
+      cantidad blank: false, nullable: false
     }
 }

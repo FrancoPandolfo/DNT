@@ -11,6 +11,7 @@ class Evento {
     Presupuesto presupuesto
     Set<Usuario> usuarios = []
     Set<Administrador> administradores = []
+    Set<Nota> notas = []
 
     Evento(String name){
         nombre = name
@@ -24,7 +25,7 @@ class Evento {
     }
 
     //agregue a la funcion los parametros de Item, ver Item!
-    def agregarCompraAProveedor(Proveedor proveedor,String nombre, Integer cantidad, Integer costo, Item.Tipo tipo){
+    def agregarCompraAProveedor(Proveedor proveedor,String nombre, Integer cantidad, BigDecimal costo, Item.Tipo tipo){
         //Proveedor proveedor = buscarProveedor(nombre)
         //if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
         //la compra la ingresa el usuario
@@ -38,11 +39,6 @@ class Evento {
         //if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
         calculoQuitarProveedor(proveedor)
         proveedores.removeElement(proveedor)
-    }
-
-    //carga el presupuesto que ingresa el usuario
-    def cargarPresupuesto(Integer presu){
-        presupuesto.cargarPresupuesto(presu)
     }
 
 
@@ -81,17 +77,24 @@ class Evento {
     }
 
     def calculoAgregarCompra(Item compra){
-        Integer costo = compra.getCosto()
-        gastoTotal.sumar(costo)
+        gastoTotal.plus(compra.costo)
         Dinero remanente = presupuesto.getRemanente()
-        remanente.restar(costo)
+        remanente.minus(compra.costo)
     }
 
     def calculoQuitarProveedor(Proveedor proveedor){
-        Integer costoTotal = proveedor.getCostoTotal()
-        gastoTotal.restar(costoTotal)
+        gastoTotal.minus(proveedor.costoTotal)
         Dinero remanente = presupuesto.getRemanente()
-        remanente.sumar(costoTotal)
+        remanente.plus(proveedor.costoTotal)
+    }
+
+    def agregarNota(String titulo, String info){
+        Nota nota = new Nota(titulo,info)
+        notas.add(nota)
+    }
+
+    def quitarNota(Nota nota){
+        notas.removeElement(nota)
     }
 
     /*
@@ -156,13 +159,6 @@ class Evento {
         return null
     }
 
-    def agregarNota(String nota){
-
-    }
-
-    def quitarNota(){
-
-    }
     */
 
     static hasMany=[
@@ -170,7 +166,8 @@ class Evento {
             cronograma:Actividad,
             tareas:Tarea,
             usuarios:Usuario,
-            administradores:Administrador
+            administradores:Administrador,
+            notas:Nota
     ]
 
     static constraints = {

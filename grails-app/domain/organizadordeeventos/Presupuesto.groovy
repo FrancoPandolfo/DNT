@@ -5,9 +5,10 @@ class Presupuesto {
     Dinero total
     Dinero remanente
 
-    def cargarPresupuesto(Integer presupuesto) {
-        total.setCantidad(presupuesto)
-        remanente.setCantidad(presupuesto)
+    Presupuesto(BigDecimal presupuesto){
+        Dinero total = new Dinero(presupuesto)
+        this.total = total
+        this.remanente = total
     }
 
     def getRemanente(){
@@ -15,6 +16,6 @@ class Presupuesto {
     }
 
     static constraints = {
-      total blank: false, nullable: false, min: 0
+      total blank: false, nullable: false
     }
 }

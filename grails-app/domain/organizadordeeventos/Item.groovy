@@ -10,13 +10,14 @@ class Item {
     Item(String name, Integer cant, BigDecimal cost, Tipo type){
         nombre = name
         cantidad = cant
-        costo.setCantidad(cost)
+        Dinero costo = new Dinero(cost)
+        this.costo = costo
         tipo = type
     }
 
-    def getCosto(){
-        return costo.getCantidad()
-    }
+    //def getCosto(){
+    //}
+
     enum Tipo{
         COMIDA,BEBIDA,INFRAESTRUCTURA,OTROS
     }
