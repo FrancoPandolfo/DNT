@@ -62,6 +62,11 @@ class Administrador extends Usuario {
         evento.fecha = date
     }
 
+    //¿esta bien esto?
+    def borrarFecha(){
+        evento.fecha = null
+    }
+
     static constraints = {
       evento nullable: false
     }
