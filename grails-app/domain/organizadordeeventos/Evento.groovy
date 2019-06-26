@@ -133,10 +133,6 @@ class Evento {
         presupuestosPosibles.removeElement(propuesta)
     }
 
-    def fijarFecha(Date date){
-        fecha = date
-    }
-
     def agregarPosibleFecha(Date date){
         fechasPosibles.add(date)
     }

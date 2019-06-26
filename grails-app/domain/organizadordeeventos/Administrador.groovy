@@ -58,6 +58,10 @@ class Administrador extends Usuario {
         evento.locacion = ""
     }
 
+    def fijarFecha(Date date){
+        evento.fecha = date
+    }
+
     static constraints = {
       evento nullable: false
     }
