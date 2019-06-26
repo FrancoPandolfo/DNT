@@ -33,6 +33,10 @@ class Evento {
         //if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
         //la compra la ingresa el usuario
         Item compra = new Item(nombre,cantidad,costo,tipo)
+        Dinero remanente = presupuesto.getRemanente()
+        if (remanente.compareTo(compra.costo) < 0){
+            throw new IllegalArgumentException("compra superior al presupuesto actual")
+        }
         proveedor.nuevaCompra(compra)
         calculoAgregarCompra(compra)
     }

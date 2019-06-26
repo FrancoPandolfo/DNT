@@ -40,7 +40,7 @@ class Administrador extends Usuario {
 
     def quitarPresupuesto(BigDecimal presu){
         Dinero presupuesto = new Dinero(presu)
-        if(evento.presupuesto.total.compareTo(presupuesto) != 0){
+        if(evento.presupuesto.total.compareTo(presupuesto) < 0){
             throw new IllegalArgumentException("Monto ingresado superior al presupuesto actual")
         }
         evento.presupuesto.total.minus(presupuesto)
