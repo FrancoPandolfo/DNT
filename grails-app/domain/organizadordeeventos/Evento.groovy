@@ -12,6 +12,7 @@ class Evento {
     Set<Usuario> usuarios = []
     Set<Administrador> administradores = []
     Set<Nota> notas = []
+    Date fecha
 
     Evento(String name){
         nombre = name
@@ -76,16 +77,20 @@ class Evento {
         tareas.removeElement(tarea)
     }
 
+
+    //¿hay que encapsular total y remanente? ¿como hacemos?
     def calculoAgregarCompra(Item compra){
         gastoTotal.plus(compra.costo)
         Dinero remanente = presupuesto.getRemanente()
         remanente.minus(compra.costo)
+        presupuesto.setRemanente(remanente)
     }
 
     def calculoQuitarProveedor(Proveedor proveedor){
         gastoTotal.minus(proveedor.costoTotal)
         Dinero remanente = presupuesto.getRemanente()
         remanente.plus(proveedor.costoTotal)
+        presupuesto.setRemanente(remanente)
     }
 
     def agregarNota(String titulo, String info){
@@ -96,6 +101,14 @@ class Evento {
     def quitarNota(Nota nota){
         notas.removeElement(nota)
     }
+
+    //¿donde guardamos la propuesta?
+    def proponerPresupuesto(BigDecimal presu){
+        Dinero propuesta = new Dinero(presu)
+    }
+
+
+
 
     /*
     //esta funion deberia revisar si el elemento ya esta en la lista, si esta no lo agrega

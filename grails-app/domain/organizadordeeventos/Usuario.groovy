@@ -42,7 +42,6 @@ class Usuario {
         eventos.removeElement(evento)
     }
 
-
     static hasMany=[
             eventos:Evento,
             proveedores:Proveedor

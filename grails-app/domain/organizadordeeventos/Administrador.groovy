@@ -28,6 +28,28 @@ class Administrador extends Usuario {
         evento.presupuesto = presupuesto
     }
 
+    //¿hay que encapsular total y remanente? ¿como hacemos?
+    def agregarPresupuesto(BigDecimal presu){
+        Dinero presupuesto = new Dinero(presu)
+        evento.presupuesto.total.plus(presupuesto)
+
+        Dinero remanente = evento.presupuesto.getRemanente()
+        remanente.plus(presupuesto)
+        evento.presupuesto.setRemanente(remanente)
+    }
+
+    def quitarPresupuesto(BigDecimal presu){
+        Dinero presupuesto = new Dinero(presu)
+        if(evento.presupuesto.total.compareTo(presupuesto) != 0){
+            throw new IllegalArgumentException("Monto ingresado superior al presupuesto actual")
+        }
+        evento.presupuesto.total.minus(presupuesto)
+
+        Dinero remanente = evento.presupuesto.getRemanente()
+        remanente.minus(presupuesto)
+        evento.presupuesto.setRemanente(remanente)
+    }
+
     static constraints = {
       evento nullable: false
     }
