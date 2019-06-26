@@ -4,3 +4,4 @@
 # 4. ¿esta bien usar el tipo Date para fecha?
 # 5. hay que ver como mostrar un calendario.
 # 6. QUIEN PUEDE PROPONER FECHAS Y EVENTOS Y DONDE GUARDARLAS
+# 7. Actividades encimadas ¿como manejamos esto? podriamos hacer 2 cronogramas y cuando se crea el evento elgir si usa cronograma con actividades que se puedan encimar o cronograma simple sin que se pueda encimar.

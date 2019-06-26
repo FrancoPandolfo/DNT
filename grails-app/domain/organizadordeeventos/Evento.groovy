@@ -37,6 +37,11 @@ class Evento {
         calculoAgregarCompra(compra)
     }
 
+    def eliminarCompra(Proveedor proveedor, Item compra){
+        proveedor.eliminarCompra(compra)
+        calculoEliminarCompra(compra)
+    }
+
     def quitarProveedor(Proveedor proveedor) {
         //Proveedor proveedor = buscador.buscarProveedor(name,proveedores)
         //if(proveedor == null){throw new IllegalArgumentException("no se encontro proveedor con ese nombre")}
@@ -92,6 +97,13 @@ class Evento {
         gastoTotal.minus(proveedor.costoTotal)
         Dinero remanente = presupuesto.getRemanente()
         remanente.plus(proveedor.costoTotal)
+        presupuesto.setRemanente(remanente)
+    }
+
+    def calculoEliminarCompra(Item compra){
+        gastoTotal.minus(compra.costo)
+        Dinero remanente = presupuesto.getRemanente()
+        remanente.plus(compra.costo)
         presupuesto.setRemanente(remanente)
     }
 
