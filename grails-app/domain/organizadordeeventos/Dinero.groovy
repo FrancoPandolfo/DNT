@@ -1,7 +1,5 @@
 package organizadordeeventos
 import java.text.DecimalFormat
-@groovy.transform.Tostring
-@groovy.transform.EqualsAndHashCode
 class Dinero implements Comparable<Dinero>, Serializable {
 
     BigDecimal cantidad
@@ -29,6 +27,6 @@ class Dinero implements Comparable<Dinero>, Serializable {
         new Dinero(this.cantidad - otro.cantidad)
     }
     static constraints = {
-      cantidad blank: false, nullable: false, min
+      cantidad blank: false, nullable: false, min: 0.0
     }
 }

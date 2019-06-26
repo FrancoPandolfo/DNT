@@ -1,6 +1,5 @@
 package organizadordeeventos
 
-@groovy.transform.Tostring
 class Usuario {
 
     //aca podria guardar en que eventos es administrador. COMO?
