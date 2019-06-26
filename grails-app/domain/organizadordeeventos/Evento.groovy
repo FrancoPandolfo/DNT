@@ -110,7 +110,7 @@ class Evento {
         presupuestosPosibles.add(propuesta)
     }
 
-    def proponerPresupuesto(Dinero propuesta){
+    def quitarPresupuesto(Dinero propuesta){
         presupuestosPosibles.removeElement(propuesta)
     }
 
