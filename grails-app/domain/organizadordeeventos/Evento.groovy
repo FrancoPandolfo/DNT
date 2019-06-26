@@ -14,6 +14,7 @@ class Evento {
     Set<Nota> notas = []
     Date fecha
     Set<Date> fechasPosibles = []
+    Set<Dinero> presupuestosPosibles = []
 
     Evento(String name){
         nombre = name
@@ -106,6 +107,11 @@ class Evento {
     //¿donde guardamos la propuesta?
     def proponerPresupuesto(BigDecimal presu){
         Dinero propuesta = new Dinero(presu)
+        presupuestosPosibles.add(propuesta)
+    }
+
+    def proponerPresupuesto(Dinero propuesta){
+        presupuestosPosibles.removeElement(propuesta)
     }
 
     def fijarFecha(Date date){
