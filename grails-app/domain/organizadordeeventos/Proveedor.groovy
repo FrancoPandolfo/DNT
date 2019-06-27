@@ -15,19 +15,20 @@ class Proveedor {
     }
 
 
-    //def getCostoTotal(){
-    //}
+    def getCostoTotal(){
+      this costoTotal
+    }
 
     def nuevaCompra(Item compra){
         compras.add(compra)
-        costoTotal.plus(compra.costo)
+        costoTotal = costoTotal + compra.costo
     }
 
     def eliminarCompra(Item compra){
         compras.removeElement(compra)
-        costoTotal.minus(compra.costo)
+        costoTotal = costoTotal - compra.costo
     }
-    
+
 /*
     //calcula el costo total del proveedor
     def calcularCostoTotal(){

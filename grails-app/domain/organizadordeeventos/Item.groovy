@@ -15,8 +15,9 @@ class Item {
         tipo = type
     }
 
-    //def getCosto(){
-    //}
+    def getCosto(){
+      this.costo
+    }
 
     enum Tipo{
         COMIDA,BEBIDA,INFRAESTRUCTURA,OTROS

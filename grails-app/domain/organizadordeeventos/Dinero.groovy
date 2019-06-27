@@ -19,6 +19,21 @@ class Dinero implements Comparable<Dinero>, Serializable {
       iguales
     }
 
+    @Override
+    boolean equals(Object o){
+      o != null && this.cantidad == (BigDecimal) o.cantidad
+      }
+
+    @Override
+    String toString(){
+      DecimalFormat df = new DecimalFormat()
+      df.setMaximumFractionDigits(2)
+      df.setMinimumFractionDigits(0)
+      df.setGroupingUsed(false)
+
+      return df.format(this.cantidad)
+    }
+
     Dinero plus(Dinero otro){
       new Dinero(this.cantidad + otro.cantidad)
     }

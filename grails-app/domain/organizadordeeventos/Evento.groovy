@@ -93,23 +93,24 @@ class Evento {
 
     //¿hay que encapsular total y remanente? ¿como hacemos?
     def calculoAgregarCompra(Item compra){
-        gastoTotal.plus(compra.costo)
+        //gastoTotal.plus(compra.costo)
+        gastoTotal = gastoTotal + compra.getCosto()
         Dinero remanente = presupuesto.getRemanente()
-        remanente.minus(compra.costo)
+        remanente = remanente + compra.getCosto()
         presupuesto.setRemanente(remanente)
     }
 
     def calculoQuitarProveedor(Proveedor proveedor){
-        gastoTotal.minus(proveedor.costoTotal)
+        gastoTotal = gastoTotal - proveedor.getCostoTotal()
         Dinero remanente = presupuesto.getRemanente()
-        remanente.plus(proveedor.costoTotal)
+        remanente = remanente + proveedor.getcostoTotal()
         presupuesto.setRemanente(remanente)
     }
 
     def calculoEliminarCompra(Item compra){
-        gastoTotal.minus(compra.costo)
+        gastoTotal = gastoTotal - compra.getcosto()
         Dinero remanente = presupuesto.getRemanente()
-        remanente.plus(compra.costo)
+        remanente = remanente + compra.getCosto()
         presupuesto.setRemanente(remanente)
     }
 

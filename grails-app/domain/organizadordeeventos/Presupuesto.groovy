@@ -15,8 +15,8 @@ class Presupuesto {
         return remanente
     }
 
-    def setRemanente(Dinero remanente){
-        this.remanente = remanente
+    def setRemanente(Dinero remanenteNuevo){
+      this.remanente = remanenteNuevo
     }
 
     static constraints = {
