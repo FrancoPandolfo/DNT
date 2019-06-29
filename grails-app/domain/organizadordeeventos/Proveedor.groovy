@@ -16,7 +16,7 @@ class Proveedor {
 
 
     def getCostoTotal(){
-      this costoTotal
+      this.costoTotal
     }
 
     def nuevaCompra(Item compra){
