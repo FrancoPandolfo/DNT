@@ -1,5 +1,6 @@
 package organizadordeeventos
 
+
 class Presupuesto {
 
     Dinero total

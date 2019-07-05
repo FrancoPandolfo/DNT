@@ -7,12 +7,12 @@ class Item {
     Tipo tipo
 
     //actualmete el costo se va a pasar por parametro, la idea es que lo calcule el proveedor.
-    Item(String name, Integer cant, BigDecimal cost, Tipo type){
-        nombre = name
-        cantidad = cant
+    Item(String nombre, Integer cantidad, BigDecimal cost, Tipo tipo){
+        this.nombre = nombre
+        this.cantidad = cantidad
         Dinero costo = new Dinero(cost)
         this.costo = costo
-        tipo = type
+        this.tipo = tipo
     }
 
     def getCosto(){

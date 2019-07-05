@@ -6,11 +6,11 @@ class Actividad {
     Date inicio
     Date fin
 
-    Actividad(String name, String descrip, Date ini, Date end){
-        nombre = name
-        descripcion = descrip
-        inicio = ini
-        fin = end
+    Actividad(String nombre, String descripcion, Date inicio, Date fin){
+        this.nombre = nombre
+        this.descripcion = descripcion
+        this.inicio = inicio
+        this.fin = fin
     }
     static constraints = {
 

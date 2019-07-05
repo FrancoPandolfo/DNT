@@ -11,10 +11,10 @@ class Usuario {
     Set<Evento> eventos = []
     Set<Proveedor> proveedores = []
 
-    Usuario(String name, String sername, String email){
-        nombre = name
-        apellido = sername
-        mail = email
+    Usuario(String nombre, String apellido, String mail){
+        this.nombre = nombre
+        this.apellido = apellido
+        this.mail = mail
     }
 
     //cuando crea el evento se vuelve admin del evento

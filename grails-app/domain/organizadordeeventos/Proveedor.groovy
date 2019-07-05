@@ -8,10 +8,10 @@ class Proveedor {
     Set<Item> compras = []
     Dinero costoTotal
 
-    Proveedor(String name){
-        nombre = name
+    Proveedor(String nombre){
+        this.nombre = nombre
         Dinero costo = new Dinero(0.0)
-        costoTotal = costo
+        this.costoTotal = costo
     }
 
 

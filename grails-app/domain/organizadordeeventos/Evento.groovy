@@ -18,8 +18,8 @@ class Evento {
     Set<Date> fechasPosibles = []
     Set<Dinero> presupuestosPosibles = []
 
-    Evento(String name){
-        nombre = name
+    Evento(String nombre){
+        this.nombre = nombre
     }
 
     //esta funcion deberia tomar los datos que ingresa el admin y pasarselos a proveedor
@@ -75,7 +75,7 @@ class Evento {
     def tareaCompletada(Tarea tarea){
         //Tarea tarea = buscador.buscarTarea(nombre,tareas)
         //if(tarea == null){throw new IllegalArgumentException("no se encontro tarea con ese nombre")}
-        tarea.completa()
+        tarea.completar()
     }
 
     def tareaEnProceso(Tarea tarea){

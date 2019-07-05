@@ -10,13 +10,13 @@ class Tarea {
         COMPLETA,INCOMPLETA,ENPROCESO
     }
 
-    Tarea(String name, String descrip){
-        nombre = name
-        descripcion = descrip
-        estado = Estado.INCOMPLETA
+    Tarea(String nombre, String descripcion){
+        this.nombre = nombre
+        this.descripcion = descripcion
+        this.estado = Estado.INCOMPLETA
     }
 
-    def completa(){
+    def completar(){
         estado = Estado.COMPLETA
     }
 
@@ -24,7 +24,7 @@ class Tarea {
         estado = Estado.ENPROCESO
     }
 
-    def incompleta(){
+    def reiniciar(){
         estado = Estado.INCOMPLETA
     }
     static constraints = {

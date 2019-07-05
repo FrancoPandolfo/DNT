@@ -3,11 +3,11 @@ package organizadordeeventos
 class Administrador extends Usuario {
     Evento evento
 
-    Administrador(Usuario usuario,Evento event){
+    Administrador(Usuario usuario,Evento evento){
         this.nombre = usuario.nombre
         this.apellido = usuario.apellido
         this.mail = usuario.mail
-        evento = event
+        this.evento = evento
     }
 
     //¿hace falta que estas funciones esten en evento?
