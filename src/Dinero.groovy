@@ -1,5 +1,6 @@
 package organizadordeeventos
 import java.text.DecimalFormat
+
 class Dinero implements Comparable<Dinero>, Serializable {
 
     BigDecimal cantidad
@@ -42,6 +43,5 @@ class Dinero implements Comparable<Dinero>, Serializable {
         new Dinero(this.cantidad - otro.cantidad)
     }
     static constraints = {
-      cantidad blank: false, nullable: false
     }
 }

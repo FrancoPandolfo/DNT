@@ -1,4 +1,5 @@
 package organizadordeeventos
+import organizadordeeventos.Dinero
 
 class Item {
     String nombre
