@@ -14,13 +14,11 @@ class Administrador extends Usuario {
     //¿hace falta que estas funciones esten en evento?
     //¿podriamos tener una lista de todas las instancias de usuario y asi buscar por String nombre?
     def agregarUsuario(Usuario usuario){
-        evento.usuarios.add(usuario)
         usuario.eventos.add(evento)
     }
 
     def agregarAdministrador(Usuario usuario){
         Administrador admin = new Administrador(usuario,evento)
-        evento.administradores.add(admin)
         usuario.eventos.add(evento)
     }
 
@@ -30,24 +28,24 @@ class Administrador extends Usuario {
     }
 
     //¿hay que encapsular total y remanente? ¿como hacemos?
-    def agregarPresupuesto(BigDecimal presu){
-        Dinero presupuesto = new Dinero(presu)
-        evento.presupuesto.total.plus(presupuesto)
+    def agregarPresupuesto(BigDecimal masPresupuesto){
+        Dinero presupuesto = new Dinero(masPresupuesto)
+        (evento.presupuesto.total) += presupuesto
 
         Dinero remanente = evento.presupuesto.getRemanente()
-        remanente.plus(presupuesto)
+        remanente = remanente + presupuesto
         evento.presupuesto.setRemanente(remanente)
     }
 
-    def quitarPresupuesto(BigDecimal presu){
-        Dinero presupuesto = new Dinero(presu)
+    def quitarPresupuesto(BigDecimal menosPresupuesto){
+        Dinero presupuesto = new Dinero(menosPresupuesto)
         if(evento.presupuesto.total.compareTo(presupuesto) < 0){
             throw new IllegalArgumentException("Monto ingresado superior al presupuesto actual")
         }
-        evento.presupuesto.total.minus(presupuesto)
+        (evento.presupuesto.total) -= presupuesto
 
         Dinero remanente = evento.presupuesto.getRemanente()
-        remanente.minus(presupuesto)
+        remanente = remanente - presupuesto
         evento.presupuesto.setRemanente(remanente)
     }
 

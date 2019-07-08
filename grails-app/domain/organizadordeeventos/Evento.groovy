@@ -12,8 +12,6 @@ class Evento {
     Set<Tarea> tareas = []
     Dinero gastoTotal
     Presupuesto presupuesto
-    Set<Usuario> usuarios = []
-    Set<Administrador> administradores = []
     Set<Nota> notas = []
     Date fecha
     Set<Date> fechasPosibles = []
@@ -104,12 +102,12 @@ class Evento {
     def calculoQuitarProveedor(Proveedor proveedor){
         gastoTotal = gastoTotal - proveedor.getCostoTotal()
         Dinero remanente = presupuesto.getRemanente()
-        remanente = remanente + proveedor.getcostoTotal()
+        remanente = remanente + proveedor.getCostoTotal()
         presupuesto.setRemanente(remanente)
     }
 
     def calculoEliminarCompra(Item compra){
-        gastoTotal = gastoTotal - compra.getcosto()
+        gastoTotal = gastoTotal - compra.getCosto()
         Dinero remanente = presupuesto.getRemanente()
         remanente = remanente + compra.getCosto()
         presupuesto.setRemanente(remanente)
