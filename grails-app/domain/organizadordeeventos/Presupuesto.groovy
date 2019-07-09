@@ -1,5 +1,4 @@
 package organizadordeeventos
-import organizadordeeventos.Dinero
 
 class Presupuesto {
 

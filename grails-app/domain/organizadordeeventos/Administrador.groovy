@@ -1,5 +1,5 @@
 package organizadordeeventos
-import organizadordeeventos.Dinero
+
 
 class Administrador extends Usuario {
     Evento evento

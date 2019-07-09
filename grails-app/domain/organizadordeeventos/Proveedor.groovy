@@ -1,16 +1,14 @@
 package organizadordeeventos
-import organizadordeeventos.Dinero
+
 
 class Proveedor {
 
     String nombre
-    //nombre elemento cantidad y costo
     Set<Item> compras = []
     Dinero costoTotal
 
-    Proveedor(String nombre){
+    Proveedor(String nombre, Dinero costo){
         this.nombre = nombre
-        Dinero costo = new Dinero(0.0)
         this.costoTotal = costo
     }
 
