@@ -9,9 +9,11 @@
 <html>
 
 <body>
-<p>
-    "OK"
-</p>
+
+
+<a href="${createLink(uri:'mostrarUsuarios')}">OK</a>
+
+
 </body>
 
 </html>

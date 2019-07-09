@@ -3,6 +3,8 @@ package organizadordeeventos
 class UrlMappings {
 
     static mappings = {
+        "/foo/bar"(view: "mostrarUsuarios")
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
