@@ -15,7 +15,7 @@ class Evento {
     Set<Nota> notas = []
     Date fecha
     Set<Date> fechasPosibles = []
-    //Set<Dinero> presupuestosPosibles = []
+    //Esto fijarse despues Set<Dinero> presupuestosPosibles = []
 
     Evento(String nombre){
         this.nombre = nombre
