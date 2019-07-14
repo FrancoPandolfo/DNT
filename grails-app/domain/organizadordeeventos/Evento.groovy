@@ -14,7 +14,7 @@ class Evento {
     Presupuesto presupuesto
     Set<Nota> notas = []
     Date fecha
-    Set<Date> fechasPosibles = []
+    PosiblesFechas fechasPosibles = new PosiblesFechas()
     //Esto fijarse despues Set<Dinero> presupuestosPosibles = []
 
     Evento(String nombre){
@@ -134,11 +134,11 @@ class Evento {
     }
 
     def agregarPosibleFecha(Date date){
-        fechasPosibles.add(date)
+        fechasPosibles.agregarPosibleFecha(date)
     }
 
     def quitarPosibleFecha(Date date){
-        fechasPosibles.removeElement(date)
+        fechasPosibles.quitarPosibleFecha(date)
     }
 
 

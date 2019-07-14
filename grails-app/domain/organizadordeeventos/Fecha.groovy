@@ -2,13 +2,17 @@ package organizadordeeventos
 
 import java.time.LocalDateTime
 
-class Fecha implements Comparable<Turno>{
+class Fecha implements Comparable<Fecha>{
     LocalDateTime fecha
     int votos
 
     Fecha(LocalDateTime fecha){
       this.fecha = fecha
       this.votos = 1
+    }
+
+    boolean estavotada(){
+      this.votos > 1
     }
 
     int votar(){
@@ -21,9 +25,13 @@ class Fecha implements Comparable<Turno>{
       this.votos
     }
 
-    void agregarFecha(){
-        
-    }
+
     static constraints = {
       fechaYhorario blank:false, nullable:false
     }
+
+    @Override
+    int compareTo(Fecha otraFecha){
+      return this.fecha <=> otraFecha.fecha
+    }
+}
