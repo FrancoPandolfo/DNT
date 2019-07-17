@@ -210,8 +210,8 @@ class Evento {
             proveedores:Proveedor,
             cronograma:Actividad,
             tareas:Tarea,
-            usuarios:Usuario,
-            administradores:Administrador,
+            //usuarios:Usuario,
+            //administradores:Administrador,
             notas:Nota
     ]
 

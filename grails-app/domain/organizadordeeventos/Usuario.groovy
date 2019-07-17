@@ -1,15 +1,29 @@
 package organizadordeeventos
 
-class Usuario {
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+import grails.compiler.GrailsCompileStatic
 
-    //aca podria guardar en que eventos es administrador. COMO?
-    //cuando entra a un evento que no es administrador no cambia su estado
-    //de usuario a administrador
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
+class Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1
+
+    String username
+    String password
+
     String nombre
     String apellido
     String mail
     Set<Evento> eventos = []
     Set<Proveedor> proveedores = []
+
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
 
     Usuario(String nombre, String apellido, String mail){
         this.nombre = nombre
@@ -22,15 +36,15 @@ class Usuario {
         Evento evento = new Evento(nombre)
         eventos.add(evento)
         Administrador admin = new Administrador(this, evento)
-        evento.usuarios.add(this)
-        evento.administradores.add(admin)
+        //evento.usuarios.add(this)
+        //evento.administradores.add(admin)
     }
 
     def cargarProveedor(String nombre){
-        Proveedor proveedor = new Proveedor(nombre)
+        Dinero costoInicial = new Dinero(0.0)
+        Proveedor proveedor = new Proveedor(nombre,costoInicial)
         proveedores.add(proveedor)
     }
-
 
     def agregarEvento(Evento evento){
         eventos.add(evento)
@@ -42,16 +56,26 @@ class Usuario {
         eventos.removeElement(evento)
     }
 
+
+    Set<Role> getAuthorities() {
+        (UsuarioRole.findAllByUsuario(this) as List<UsuarioRole>)*.role as Set<Role>
+    }
+
+
     static hasMany=[
             eventos:Evento,
             proveedores:Proveedor
     ]
 
     static constraints = {
+        password nullable: false, blank: false, password: true
+        username nullable: false, blank: false, unique: true
+        //nombre blank: false, nullable: false
+        //apellido blank: false, nullable: false
+        //mail blank: false, nullable: false, mail: true
+    }
 
-        nombre blank: false, nullable: false
-        apellido blank: false, nullable: false
-        mail blank: false, nullable: false, mail: true
-
+    static mapping = {
+	    password column: '`password`'
     }
 }

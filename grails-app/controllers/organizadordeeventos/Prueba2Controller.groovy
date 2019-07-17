@@ -1,5 +1,7 @@
 package organizadordeeventos
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class CrearEventoCommand {
     Long usuario
     //Long evento
@@ -10,6 +12,7 @@ class CrearEventoCommand {
     }
 }
 
+@Secured(['IS_AUTHENTICATED_FULLY'])
 class Prueba2Controller {
 
     def prueba2Service
