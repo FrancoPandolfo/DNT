@@ -9,6 +9,11 @@ class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def misEventos(){
+      Usuario usuario = authenticatedUser
+      respond (usuario.eventos, model:[id:usuario.id])
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond usuarioService.list(params), model:[usuarioCount: usuarioService.count()]

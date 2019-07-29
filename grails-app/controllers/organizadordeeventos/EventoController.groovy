@@ -82,8 +82,8 @@ class EventoController {
     }
 
     @Secured(['ROLE_COMUN'])
-    def misNotas(){
+    def misTareas(){
       Usuario usuario = authenticatedUser
-      respond (evento.notas, model:[id:Evento.id])
+      respond (evento.tareas, model:[id:Evento.id])
     }
 }
