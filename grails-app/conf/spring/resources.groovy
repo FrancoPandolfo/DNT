@@ -1,3 +1,5 @@
-// Place your Spring DSL code here
+import organizadordeeventos.UserPasswordEncoderListener
 beans = {
+    userPasswordEncoderListener(UserPasswordEncoderListener)
+
 }

@@ -1,5 +1,7 @@
 package organizadordeeventos
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['permitAll'])
 class Prueba4Controller {
 
     class RegistracionCommand {
@@ -35,4 +37,3 @@ class Prueba4Controller {
         ]
     }
 }
-

@@ -1,6 +1,6 @@
 package organizadordeeventos
 
-class Usuario {
+class Usuario extends User{
 
     //aca podria guardar en que eventos es administrador. COMO?
     //cuando entra a un evento que no es administrador no cambia su estado

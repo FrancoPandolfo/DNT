@@ -27,7 +27,7 @@ class Fecha implements Comparable<Fecha>{
 
 
     static constraints = {
-      fechaYhorario blank:false, nullable:false
+      fecha blank:false, nullable:false
     }
 
     @Override

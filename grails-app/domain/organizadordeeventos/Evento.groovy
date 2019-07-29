@@ -142,69 +142,6 @@ class Evento {
     }
 
 
-    /*
-    //esta funion deberia revisar si el elemento ya esta en la lista, si esta no lo agrega
-    //y suma al contador en la posicion
-    //el usuario debe ingresar los datos del item de infraestructura
-    def agregarInfraestructura(){
-        Item infra = infraestructura.agregarInfraestructura()
-        calculador.calculoAgregarInfraestructura(presupuesto,infra,gastoTotal)
-    }
-
-    def quitarInfraestructura(String nombre){
-        Item infra = infraestructura.quitarInfraestructura(nombre)
-        calculador.calculoQuitarInfraestructura(presupuesto,infra,gastoTotal)
-    }
-    */
-
-    /*
-   ////esta funcion deberia tomar los datos que ingresa el admin y pasarselos a transporta
-   //o a otra clase para que llene un transporte y dsp agregarlo al set
-   def cargarTransporte(nombre,detalles){
-       Transporte transporte = new Transporte()
-       transportes.add(transporte)
-   }
-
-   def quitarTransporte(String name){
-       Transporte transporte = buscarTransporte(name)
-       transportes.removeElement(transporte)
-   }
-
-   def buscarTransporte(String name){
-       for(trans in transportes ){
-           if (trans.nombre == name) {
-               return trans
-           }
-       }
-       return null
-   }
-   */
-
-
-    /*
-    //agrega un usuario a la lista de invitados del evento y aumento contador de invitados
-    def agregarInvitado(Usuario invitado){
-        info.invitados.add(invitado)
-        info.cantidadInvitados++
-    }
-
-    //si el evento es privado?
-    def quitarInvitado(String name){
-        Usuario invitado = buscarInvitado(name)
-        info.invitados.removeElement(invitado)
-        info.cantidadInvitados--
-    }
-
-    def buscarInvitado(String name){
-        for(inv in info.invitados ){
-            if (inv.nombre == name) {
-                return inv
-            }
-        }
-        return null
-    }
-
-    */
 
     static hasMany=[
             proveedores:Proveedor,
