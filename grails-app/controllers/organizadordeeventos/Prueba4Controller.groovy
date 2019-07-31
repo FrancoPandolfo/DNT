@@ -31,10 +31,10 @@ class Prueba4Controller {
         UsuarioRole.create(nuevoUsuario,RolDeUsuario)
         [nombre:nombre,apellido:apellido,mail:mail]
 
-        redirect(action: "mostrarUsuarios1")
+        redirect(action: "mostrarUsuarios")
     }
 
-    def mostrarUsuarios1(){
+    def mostrarUsuarios(){
 
         [
                 usuarios: Usuario.list(),

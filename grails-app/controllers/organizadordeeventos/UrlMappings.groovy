@@ -4,7 +4,7 @@ class UrlMappings {
 
     static mappings = {
 
-        "/mostrarUsuarios1"(controller: 'prueba4Controller')
+        "/mostrarUsuarios"(controller: 'prueba4Controller')
         "/mostrarUsuarios"(controller: 'prueba3Controller')
 
         "/$controller/$action?/$id?(.$format)?"{
