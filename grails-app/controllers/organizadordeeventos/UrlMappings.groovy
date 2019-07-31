@@ -6,6 +6,7 @@ class UrlMappings {
 
         "/mostrarUsuarios"(controller: 'prueba4Controller')
         "/mostrarUsuarios"(controller: 'prueba3Controller')
+        "/menu"(controller: 'pruebaConEventoController')
 
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
