@@ -9,6 +9,12 @@
 
     <p>
         <br>
+        <label for="username">usuario:</label>
+        <input type="text" name="username" id="username"><br>
+        <br>
+        <label for="password">contraseña:</label>
+        <input type="password" name="password" id="password"><br>
+        <br>
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre"><br>
         <br>

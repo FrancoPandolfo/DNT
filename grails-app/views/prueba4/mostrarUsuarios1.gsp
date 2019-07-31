@@ -12,6 +12,8 @@
     <h3>${i+1}. ${usuario.apellido}, ${usuario.nombre}</h3>
     <p>
         mail: ${usuario.mail}
+        usuario: ${usuario.username}
+        contraseña: ${usuario.password}
     </p>
     <br/>
 </g:each>

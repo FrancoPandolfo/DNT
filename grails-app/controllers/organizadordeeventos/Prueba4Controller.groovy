@@ -21,17 +21,20 @@ class Prueba4Controller {
     def index() { }
 
     def guardarUsuario(){
+        def RolDeUsuario = new Role(authority: 'ROLE_COMUN').save(flush: true)
         def nombre = params.nombre
         def apellido = params.apellido
         def mail = params.mail
-        new Usuario(nombre,apellido,mail).save(failOnError: true)
-
+        def username = params.username
+        def password = params.password
+        Usuario nuevoUsuario = new Usuario(nombre:nombre,apellido:apellido,mail:mail,username: username,password: password,enabled: true).save(failOnError: true)
+        UsuarioRole.create(nuevoUsuario,RolDeUsuario)
         [nombre:nombre,apellido:apellido,mail:mail]
 
-        redirect(action: "mostrarUsuarios")
+        redirect(action: "mostrarUsuarios1")
     }
 
-    def mostrarUsuarios(){
+    def mostrarUsuarios1(){
 
         [
                 usuarios: Usuario.list(),
