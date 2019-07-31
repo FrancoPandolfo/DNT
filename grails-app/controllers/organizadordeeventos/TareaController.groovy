@@ -36,7 +36,7 @@ class TareaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond eventoService.list(params), model:[TareaCount: tareaService.count()]
+        respond tareaService.list(params), model:[TareaCount: tareaService.count()]
     }
 
 

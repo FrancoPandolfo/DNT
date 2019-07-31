@@ -81,9 +81,17 @@ class EventoController {
         }
     }
 
-    @Secured(['ROLE_COMUN'])
-    def misTareas(){
+    @Secured(['ROLE_COMUN','ROLE_ADMIN'])
+    def misTareas(Long eventoId){
       Usuario usuario = authenticatedUser
+      evento = eventoService.get(eventoId)
       respond (evento.tareas, model:[id:Evento.id])
+    }
+
+    @Secured(['ROLE_COMUN','ROLE_ADMIN'])
+    def verPresupuesto(){
+      Usuario usuario = authenticatedUser
+      evento = eventoService.get(eventoId)
+      respond (evento.presupuesto, model:[id:Evento.id])
     }
 }
