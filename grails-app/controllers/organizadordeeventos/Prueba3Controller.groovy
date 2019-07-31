@@ -29,18 +29,24 @@ class Prueba3Controller {
         def prueba3Service
 
         def RolDeUsuario = new Role(authority: 'ROLE_COMUN').save(flush: true)
-        def nuevoUsuario = Usuario.findByUsername(params.id)
-        if(!nuevoUsuario){
-            nuevoUsuario.username = params.usuario
-            nuevoUsuario.mail = params.mail
-            nuevoUsuario.nombre = params.nombre
-            nuevoUsuario.apellido = params.apellido
-            nuevoUsuario.password = params.contra
+        //def nuevoUsuario = Usuario.findByUsername(params.id)
+        def mail = params.mail
+        def nombre = params.nombre
+        def apellido = params.apellido
+        def username = params.usuario
+        def password = params.contra
+        Usuario nuevoUsuario = new Usuario(nombre:nombre, apellido:apellido,mail: mail,username:username,password: password).save(failOnError: true)
+        UsuarioRole.create(nuevoUsuario,RolDeUsuario)
+        //if(nuevoUsuario){
             nuevoUsuario.enabled = true
             nuevoUsuario.accountExpired = false
             nuevoUsuario.accountLocked = false
             nuevoUsuario.passwordExpired = false
             nuevoUsuario.authorities ?: RolDeUsuario
+            nuevoUsuario.save(failOnError: true)
+
+
+            /*
             if(prueba3Service.register(nuevoUsuario)){
                 flash.message = "Your account has been created. Welcome " + nuevoUsuario.nombre
                 flash.message_type = 'success'
@@ -51,11 +57,19 @@ class Prueba3Controller {
                 redirect(action: 'register')
                 println("guardando usuario")
             }
-        }else{
+
+             */
+        //}else{
+            flash.message = "error en creacion"
+            /*
             flash.message = "el nombre de usuario ya esta tomado. Porfavor igrese otro"
             flash.message_type = 'peligro'
             println("confirmando usuario")
-        }
+
+             */
+        //}
+
+        redirect(action: "mostrarUsuarios")
 
         /*
         def nombreDeUsuario = params.username
