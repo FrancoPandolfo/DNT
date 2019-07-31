@@ -45,7 +45,8 @@ class PruebaConEventoController {
     @SuppressWarnings(['FactoryMethodName', 'GrailsMassAssignment'])
     def crearEvento(){
         def nombre = params.nombre
-        respond new Evento(nombre)//.save(failOnError: true)
+        respond new Evento(nombre)
+        [nombre:nombre]
     }
 
     def guardarEvento(Evento evento){
@@ -61,9 +62,9 @@ class PruebaConEventoController {
         }
         */
 
-        evento.save flush: true
+        evento.save(failOnError: true)
 
-        redirect(action: "menu")
+        redirect(action: "agregarAtributo")
 
         /*
         request.withFormat {
@@ -74,7 +75,7 @@ class PruebaConEventoController {
          */
     }
 
-    def menu(Evento evento){
+    def agregarAtributo(){
         respond evento
         // como guardar datos en el evento
         //cada operacion deberia tener un boton de enviar formulario

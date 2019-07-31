@@ -7,11 +7,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-<head>
-    <title></title>
-</head>
-
 <body>
-<a href="${createLink(uri:'menu')}">ir a menu de usuario</a>
+<a href="${createLink(uri:'agregarAtributo')}">ir a menu de usuario</a>
 </body>
 </html>

@@ -6,15 +6,12 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<!--<g:form action="agregar">-->
+
 <html>
-<head>
-    <title></title>
-</head>
 
 <body>
-
 <p>
+    <br>
 <label for="presupuesto">ingrese su presupuesto:</label>
 <input type="number" name="presupuesto" id="presupuesto"><br>
 <br>
@@ -25,4 +22,3 @@
 
 </body>
 </html>
-<!--</g:form>-->

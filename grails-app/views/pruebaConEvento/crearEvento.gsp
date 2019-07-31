@@ -7,7 +7,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <g:form action="guardarEvento">
-
     <p>
         <br>
         <label for="nombre">Nombre:</label>
