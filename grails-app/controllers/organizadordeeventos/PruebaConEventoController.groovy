@@ -3,7 +3,7 @@ package organizadordeeventos
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.http.HttpStatus
 
-/*
+
 class ConEventoCommand {
     Long evento
 
@@ -11,7 +11,8 @@ class ConEventoCommand {
         evento nullable: false
     }
 }
-*/
+
+
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class PruebaConEventoController {
@@ -112,9 +113,15 @@ class PruebaConEventoController {
         ]
     }
 
-    def mostrarPresupuesto(Evento evento){
-        respond evento
-        render "${evento.nombre} presupuesto: "
-        render "${evento.presupuesto}"
+    def mostrarPresupuesto(ConEventoCommand cmd){
+
+        if (!cmd.hasErrors()) {
+            assert PruebaConEventoService != null
+            Evento evento = PruebaConEventoService.agregar(cmd.evento)
+            render "${evento.nombre} presupuesto: "
+            render "${evento.presupuesto}"
+        } else {
+            render "hay errores ${cmd.errors}"
+        }
     }
 }
