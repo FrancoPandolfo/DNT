@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <body>
+<g:form action="mostrarEvento">
 <p>
     <br>
     <label for="presupuesto">ingrese su presupuesto:</label>
@@ -15,7 +16,6 @@
     <br>
     <input type="submit" value="cargar presupuesto" />
 </p>
-
-<a href="${createLink(uri:'mostrarEvento')}">ir al evento</a>
+</g:form>
 </body>
 </html>

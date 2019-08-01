@@ -61,6 +61,8 @@ class PruebaConEventoController {
             return
         }
         */
+        def presupuesto = params.presupuesto
+        evento.presupuesto = presupuesto
 
         evento.save(failOnError: true)
 
@@ -76,7 +78,7 @@ class PruebaConEventoController {
         //cada operacion deberia tener un boton de enviar formulario
 
         //operaciones de admin
-        def presupuesto = params.presupuesto
+
         def agregarPresupuesto = params.agregarPresupuesto
         def quitarPresupuesto = params.quitarPresupuesto
         def locacion = params.locacion
@@ -101,8 +103,6 @@ class PruebaConEventoController {
         def propuestaFecha = params.propuestaFecha
         def quitarPropuestaFecha = params.quitarPropuestaFecha
 
-        evento.presupuesto = presupuesto
-
 
     }
 
@@ -113,7 +113,8 @@ class PruebaConEventoController {
     }
 
     def mostrarPresupuesto(Evento evento){
-
-        println(evento.presupuesto)
+        respond evento
+        render "${evento.nombre} presupuesto: "
+        render "${evento.presupuesto}"
     }
 }
