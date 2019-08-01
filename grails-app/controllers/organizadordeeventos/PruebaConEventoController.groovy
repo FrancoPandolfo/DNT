@@ -110,6 +110,10 @@ class PruebaConEventoController {
         [
                eventos: Evento.list(),
         ]
-        render "Evento.presupuesto"
+    }
+
+    def mostrarPresupuesto(Evento evento){
+
+        println(evento.presupuesto)
     }
 }

@@ -13,7 +13,7 @@
     <label for="presupuesto">ingrese su presupuesto:</label>
     <input type="number" name="presupuesto" id="presupuesto"><br>
     <br>
-    <input type="submit" />
+    <input type="submit" value="cargar presupuesto" />
 </p>
 
 <a href="${createLink(uri:'mostrarEvento')}">ir al evento</a>
