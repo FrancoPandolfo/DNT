@@ -64,8 +64,6 @@ class PruebaConEventoController {
 
         evento.save(failOnError: true)
 
-        redirect(action: "agregarAtributo")
-
         /*
         request.withFormat {
             form multipartForm { redirect evento }
@@ -73,10 +71,7 @@ class PruebaConEventoController {
         }
 
          */
-    }
 
-    def agregarAtributo(){
-        respond evento
         // como guardar datos en el evento
         //cada operacion deberia tener un boton de enviar formulario
 
@@ -107,15 +102,6 @@ class PruebaConEventoController {
         def quitarPropuestaFecha = params.quitarPropuestaFecha
 
         evento.presupuesto = presupuesto
-
-        /*
-        if (!cmd.hasErrors()) {
-            assert PruebaConEventoService != null
-            PruebaConEventoService.agregar(cmd.evento, presupuesto)
-            render "OK"
-        } else {
-            render "hay errores ${cmd.errors}"
-        }*/
 
 
     }

@@ -8,6 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <body>
-<a href="${createLink(uri:'agregarAtributo')}">ir a menu de usuario</a>
+<p>
+    <br>
+    <label for="presupuesto">ingrese su presupuesto:</label>
+    <input type="number" name="presupuesto" id="presupuesto"><br>
+    <br>
+    <input type="submit" />
+</p>
+
+<a href="${createLink(uri:'mostrarEvento')}">ir al evento</a>
 </body>
 </html>

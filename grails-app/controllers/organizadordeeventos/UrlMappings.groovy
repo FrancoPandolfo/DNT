@@ -4,7 +4,7 @@ class UrlMappings {
 
     static mappings = {
 
-        "/agregarAtributo"(controller: 'PruebaConEventoController')
+        "/mostarEvento"(controller: 'PruebaConEventoController')
         "/mostrarUsuarios"(controller: 'prueba4Controller')
         "/mostrarUsuarios"(controller: 'prueba3Controller')
 
