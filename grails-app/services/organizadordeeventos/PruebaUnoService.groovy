@@ -9,4 +9,9 @@ class PruebaUnoService {
       usuario.eventos.add(evento)
       usuario.save()
   }
+
+  def crearEvento(Usuario usuario,String nombre) {
+      usuario.crearEvento(nombre)
+      usuario.save()
+  }
 }

@@ -32,6 +32,8 @@ class PruebaUnoController {
 
     def crearEvento(){
         def nombre = params.nombre
+        //Usuario usuarioActual = springSecurityService.currentUser
+        //pruebaUnoService.crearEvento(usuarioActual,nombre)
         respond new Evento(nombre)
         [nombre:nombre]
 

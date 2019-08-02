@@ -35,7 +35,7 @@ class Usuario implements Serializable {
     def crearEvento(String nombre){
         Evento evento = new Evento(nombre)
         eventos.add(evento)
-        Administrador admin = new Administrador(this, evento)
+        new Administrador(this, evento)
         //evento.usuarios.add(this)
         //evento.administradores.add(admin)
     }
