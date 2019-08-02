@@ -31,13 +31,18 @@ class PruebaUnoController {
     }
 
     def crearEvento(){
-
         def nombre = params.nombre
+        respond new Evento(nombre)
+        [nombre:nombre]
 
-        Evento evento = new Evento(nombre).save()
+        //no se esta guardando evento (nombre null)
+    }
+
+    def guardarEvento(Evento evento){
+        evento.save(failOnError: true)
         Usuario usuarioActual = springSecurityService.currentUser
-
         pruebaUnoService.agregarEvento(usuarioActual,evento)
 
+        redirect (action: "index")
     }
 }

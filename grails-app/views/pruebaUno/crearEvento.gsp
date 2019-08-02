@@ -6,8 +6,8 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<g:form action="index">
+
+<g:form action="guardarEvento">
     <p>
         <br>
         <label for="nombre">Nombre:</label>
@@ -18,4 +18,3 @@
         <input type="submit" value="crear" />
     </p>
 </g:form>
-</html>

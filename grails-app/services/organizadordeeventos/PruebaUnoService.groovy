@@ -7,5 +7,6 @@ class PruebaUnoService {
 
   def agregarEvento(Usuario usuario, Evento evento){
       usuario.eventos.add(evento)
+      usuario.save()
   }
 }
