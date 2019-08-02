@@ -9,7 +9,7 @@
 <html>
 <body>
 
-<g:form>
+<g:form action="verEvento">
 
 
     <p>
@@ -24,10 +24,15 @@
 
 
     <p>
-        <input type="submit" />
+        <input type="submit" valued="ver Evento" />
     </p>
 
 
 </g:form>
+
+<g:form action="crearEvento">
+    <button type="submit">crear nuevo evento</button>
+</g:form>
+
 </body>
 </html>
