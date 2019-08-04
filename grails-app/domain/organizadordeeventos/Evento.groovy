@@ -154,5 +154,10 @@ class Evento {
 
     static constraints = {
       nombre blank: false, nullable: false
+        locacion nullable: true
+        fecha nullable: true
+        cronograma nullable: true
+        presupuesto nullable: true
+        gastoTotal nullable: true
     }
 }
