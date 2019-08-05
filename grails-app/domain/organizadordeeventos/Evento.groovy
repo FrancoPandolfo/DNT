@@ -159,5 +159,6 @@ class Evento {
         cronograma nullable: true
         presupuesto nullable: true
         gastoTotal nullable: true
+        fechasPosibles nullable:true
     }
 }

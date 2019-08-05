@@ -3,12 +3,21 @@ package organizadordeeventos
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+import grails.plugin.springsecurity.annotation.Secured
+@Secured(['permitAll'])
 class UsuarioController {
 
     UsuarioService usuarioService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured(['ROLE_COMUN'])
+    def miUsuario(){
+      Usuario usuario = authenticatedUser
+      respond usuario
+    }
+
+    @Secured(['ROLE_COMUN'])
     def misEventos(){
       Usuario usuario = authenticatedUser
       respond (usuario.eventos, model:[id:usuario.id])
@@ -19,6 +28,7 @@ class UsuarioController {
         respond usuarioService.list(params), model:[usuarioCount: usuarioService.count()]
     }
 
+    @Secured(['ROLE_COMUN'])
     def show(Long id) {
         respond usuarioService.get(id)
     }

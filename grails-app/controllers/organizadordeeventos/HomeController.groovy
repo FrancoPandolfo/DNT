@@ -9,7 +9,7 @@ class HomeController {
 
     def index() {
         if (loginService.esUsuario(loggedIn, authenticatedUser)){
-            redirect(controller: "usuario", action:"show")
+            redirect(controller: "usuario", action:"miUsuario")
         } else if(loginService.esAdmin(loggedIn, authenticatedUser)){
             render(view: "adminHome")
         }
