@@ -13,7 +13,7 @@
 
 
     %{--local assets--}%
-    %<asset:stylesheet src="material.teal-amber.min.css"/>%
+    %<asset:stylesheet src="material.blue.min.css"/>%
     <asset:javascript src="popper.min.js" />
     <asset:stylesheet src="application.css"/>
 

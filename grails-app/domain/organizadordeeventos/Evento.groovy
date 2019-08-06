@@ -6,13 +6,13 @@ class Evento {
     String nombre
     //por ahora locacion es un string
     String locacion
-    Set<Proveedor>proveedores=[]
+    Set<Proveedor>proveedores = []
     //puede que haya una funcionalidad de calendario que te de una lista de horarios o algo asi
     Cronograma cronograma
     Set<Tarea> tareas = []
     Dinero gastoTotal
     Presupuesto presupuesto
-    Set<Nota> notas = []
+    // No le encuentro sentido a esto Set<Nota> notas = []
     Date fecha
     PosiblesFechas fechasPosibles = new PosiblesFechas()
     //Esto fijarse despues Set<Dinero> presupuestosPosibles = []
@@ -143,6 +143,8 @@ class Evento {
 
 
 
+
+
     static hasMany=[
             proveedores:Proveedor,
             cronograma:Actividad,
@@ -159,6 +161,6 @@ class Evento {
         cronograma nullable: true
         presupuesto nullable: true
         gastoTotal nullable: true
-        fechasPosibles nullable:true
+        fechasPosibles nullable: true
     }
 }

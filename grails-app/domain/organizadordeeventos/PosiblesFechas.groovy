@@ -3,20 +3,21 @@ package organizadordeeventos
 class PosiblesFechas {
     private Set<Fecha> fechas = []
 
-    public void agregarPosibleFecha(Date fecha){
+    public Fecha agregarPosibleFecha(Date fecha){
       Fecha fechaaAgregar = new Fecha(fecha)
       def fechaAnterior = this.fechas.find { i -> i == fechaaAgregar }
       if (fechaAnterior){
         fechaAnterior.votar()
+        return fechaAnterior
       }
-      else{
-        fechas.add(fechaaAgregar)
-      }
+
+      fechas.add(fechaaAgregar)
+      return fechaaAgregar
     }
 
     public void quitarPosibleFecha(Date fecha){
-      Fecha fechaaAgregar = new Fecha(fecha)
-      def fechaAnterior = this.fechas.find { i -> i == fechaaAgregar }
+      Fecha fechaaQuitar = new Fecha(fecha)
+      def fechaAnterior = this.fechas.find { i -> i == fechaaQuitar }
       if (!fechaAnterior){
         throw new IllegalArgumentException("La fecha no se encuentra entre las posibles")
       }

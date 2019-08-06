@@ -10,6 +10,7 @@ class Usuario extends User{
     String mail
     Set<Evento> eventos = []
     Set<Proveedor> proveedores = []
+  
 
     Usuario(String nombre, String apellido, String mail){
         this.nombre = nombre
