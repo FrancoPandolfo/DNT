@@ -11,6 +11,7 @@ class PruebaUnoService {
 
   def eliminarEvento(Usuario usuario, Evento evento){
       usuario.quitarEvento(evento)
+      evento.delete(flush: true)
   }
 
   def cargarProveedor(Usuario usuario,String nombre) {

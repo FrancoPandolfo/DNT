@@ -36,7 +36,8 @@ class Usuario implements Serializable {
         Evento evento = new Evento(nombre)
         evento.save(failOnError:true)
         eventos.add(evento)
-        new Administrador(this, evento).save()
+        //vamos a mantener admin? como le hago save? si le hago aca rome el save de evento . flush?
+        new Administrador(this, evento)
         //evento.usuarios.add(this)
         //evento.administradores.add(admin)
     }
