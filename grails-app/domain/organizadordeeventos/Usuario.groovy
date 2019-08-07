@@ -36,7 +36,7 @@ class Usuario implements Serializable {
         Evento evento = new Evento(nombre)
         evento.save(failOnError:true)
         eventos.add(evento)
-        new Administrador(this, evento)
+        new Administrador(this, evento).save()
         //evento.usuarios.add(this)
         //evento.administradores.add(admin)
     }
@@ -45,6 +45,11 @@ class Usuario implements Serializable {
         Dinero costoInicial = new Dinero(0.0)
         Proveedor proveedor = new Proveedor(nombre,costoInicial)
         proveedores.add(proveedor)
+        proveedor.save(failOnError:true)
+    }
+
+    def quitarProveedor(Proveedor proveedor){
+        proveedores.removeElement(proveedor)
     }
 
     def agregarEvento(Evento evento){

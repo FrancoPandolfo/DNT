@@ -45,7 +45,7 @@
 
 
     <p>
-        <button type="submit">eliminar evento</button>
+        <button type="submit" onclick="return confirm('¿Esta seguro?')" >eliminar evento</button>
     </p>
 
 
@@ -56,10 +56,30 @@
 </g:form>
 
 <g:form action="cargarProveedor">
+    <p>
+        <g:select
+                name="proveedores"
+                from="${proveedores}"
+                optionKey="id"
+                optionValue="nombre"
+                noSelection="['': '(elegí una opción)']"
+        />
+    </p>
     <button type="submit">cargar nuevo proveedor</button>
 </g:form>
 
-
+<g:form action="quitarProveedor">
+    <p>
+        <g:select
+                name="proveedores"
+                from="${proveedores}"
+                optionKey="id"
+                optionValue="nombre"
+                noSelection="['': '(elegí una opción)']"
+        />
+    </p>
+    <button type="submit">eliminar proveedor</button>
+</g:form>
 
 </body>
 </html>

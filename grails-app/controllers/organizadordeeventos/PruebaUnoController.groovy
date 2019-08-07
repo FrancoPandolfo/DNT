@@ -4,11 +4,33 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
-class PruebaUnoCommand {
+class NombreEventoCommand {
     String nombre
 
     static constraints = {
         nombre nullable: false
+    }
+}
+
+class IdEventoCommand {
+    Long evento
+
+    static constraints = {
+        evento nullable: false
+    }
+}
+
+class NombreProveedorCommand{
+    String nombre
+    static constraints = {
+        nombre nullable: false
+    }
+}
+
+class IdProveedorCommand{
+    Long proveedor
+    static constraints = {
+        proveedor nullable: false
     }
 }
 
@@ -21,19 +43,14 @@ class PruebaUnoController {
 
     def index() {
 
-        //Object usuarioPrincipal = SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication()
-        //String username = ((UserDetails)usuarioPrincipal).getUsername()
-        //Long userId = sprinSecurityService.currentUser
-        //Usuario usuarioActual = pruebaUnoService.getUsuarioActual(userId)
-
         Usuario usuarioActual = springSecurityService.currentUser
         render "${usuarioActual.nombre} "
         render "${usuarioActual.apellido}"
 
 
         [
-                eventos: usuarioActual.eventos
+                eventos: usuarioActual.eventos,
+                proveedores: usuarioActual.proveedores
         ]
 
 
@@ -43,21 +60,32 @@ class PruebaUnoController {
     def crearEvento(){
     }
 
-    def guardarEvento(PruebaUnoCommand cmd){
+    def guardarEvento(NombreEventoCommand cmd){
         Usuario usuarioActual = springSecurityService.currentUser
         pruebaUnoService.crearEvento(usuarioActual,cmd.nombre)
         redirect (action: "index")
     }
 
-    def eliminarEvento(){
+    def eliminarEvento(IdEventoCommand cmd){
         Usuario usuarioActual = springSecurityService.currentUser
+        Evento evento = Evento.get(cmd.evento)
         pruebaUnoService.eliminarEvento(usuarioActual,evento)
+        redirect (action: "index")
     }
 
     def cargarProveedor(){
-        String nombre = params.nombre
+    }
+
+    def crearProveedor(NombreProveedorCommand cmd){
         Usuario usuarioActual = springSecurityService.currentUser
-        pruebaUnoService.cargarProveedor(usuarioActual,nombre)
+        pruebaUnoService.cargarProveedor(usuarioActual,cmd.nombre)
+        redirect (action: "index")
+    }
+
+    def quitarProveedor(IdProveedorCommand cmd){
+        Usuario usuarioActual = springSecurityService.currentUser
+        Proveedor proveedor = Proveedor.get(cmd.proveedor)
+        pruebaUnoService.quitarProveedor(usuarioActual,proveedor)
         redirect (action: "index")
     }
 }
