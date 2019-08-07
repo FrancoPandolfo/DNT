@@ -20,5 +20,6 @@ class PruebaUnoService {
 
     def quitarProveedor(Usuario usuario,Proveedor proveedor) {
         usuario.quitarProveedor(proveedor)
+        proveedor.delete(flush: true)
     }
 }
