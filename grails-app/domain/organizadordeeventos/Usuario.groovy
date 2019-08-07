@@ -34,6 +34,7 @@ class Usuario implements Serializable {
     //cuando crea el evento se vuelve admin del evento
     def crearEvento(String nombre){
         Evento evento = new Evento(nombre)
+        evento.save(failOnError:true)
         eventos.add(evento)
         new Administrador(this, evento)
         //evento.usuarios.add(this)

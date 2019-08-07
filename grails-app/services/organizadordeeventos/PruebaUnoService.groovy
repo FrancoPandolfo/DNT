@@ -12,6 +12,14 @@ class PruebaUnoService {
 
   def crearEvento(Usuario usuario,String nombre) {
       usuario.crearEvento(nombre)
-      usuario.save()
+      //usuario.save()
+  }
+
+  def eliminarEvento(Usuario usuario, Evento evento){
+      usuario.quitarEvento(evento)
+  }
+
+  def cargarProveedor(Usuario usuario,String nombre) {
+      usuario.cargarProveedor(nombre)
   }
 }

@@ -4,8 +4,16 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
+class PruebaUnoCommand {
+    String nombre
 
-@Secured(['IS_AUTHENTICATED_FULLY'])
+    static constraints = {
+        nombre nullable: false
+    }
+}
+
+//@Secured(['IS_AUTHENTICATED_FULLY'])
+@Secured(['ROLE_COMUN','ROLE_ADMIN'])
 class PruebaUnoController {
 
     def springSecurityService
@@ -28,23 +36,28 @@ class PruebaUnoController {
                 eventos: usuarioActual.eventos
         ]
 
+
+
     }
 
     def crearEvento(){
-        def nombre = params.nombre
-        //Usuario usuarioActual = springSecurityService.currentUser
-        //pruebaUnoService.crearEvento(usuarioActual,nombre)
-        respond new Evento(nombre)
-        [nombre:nombre]
-
-        //no se esta guardando evento (nombre null)
     }
 
-    def guardarEvento(Evento evento){
-        evento.save(failOnError: true)
+    def guardarEvento(PruebaUnoCommand cmd){
         Usuario usuarioActual = springSecurityService.currentUser
-        pruebaUnoService.agregarEvento(usuarioActual,evento)
+        pruebaUnoService.crearEvento(usuarioActual,cmd.nombre)
+        redirect (action: "index")
+    }
 
+    def eliminarEvento(){
+        Usuario usuarioActual = springSecurityService.currentUser
+        pruebaUnoService.eliminarEvento(usuarioActual,evento)
+    }
+
+    def cargarProveedor(){
+        String nombre = params.nombre
+        Usuario usuarioActual = springSecurityService.currentUser
+        pruebaUnoService.cargarProveedor(usuarioActual,nombre)
         redirect (action: "index")
     }
 }

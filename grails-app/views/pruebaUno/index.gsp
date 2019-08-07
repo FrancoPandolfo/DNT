@@ -9,7 +9,28 @@
 <html>
 <body>
 
-<g:form action="verEvento">
+<g:form controller="PruebaUnoEvento" action="index ">
+
+
+    <p>
+        <g:select
+                name="evento"
+                from="${eventos}"
+                optionKey="id"
+                optionValue="nombre"
+                noSelection="['': '(elegí una opción)']"
+        />
+    </p>
+
+
+    <p>
+        <button type="submit">ver evento</button>
+    </p>
+
+
+</g:form>
+
+<g:form action="eliminarEvento">
 
 
     <p>
@@ -24,7 +45,7 @@
 
 
     <p>
-        <input type="submit" valued="ver Evento" />
+        <button type="submit">eliminar evento</button>
     </p>
 
 
@@ -33,6 +54,12 @@
 <g:form action="crearEvento">
     <button type="submit">crear nuevo evento</button>
 </g:form>
+
+<g:form action="cargarProveedor">
+    <button type="submit">cargar nuevo proveedor</button>
+</g:form>
+
+
 
 </body>
 </html>
