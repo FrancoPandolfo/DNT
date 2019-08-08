@@ -49,7 +49,7 @@ class PruebaUnoController {
 
 
         [
-                eventos: usuarioActual.eventos,
+                eventos: Evento.list(),
                 proveedores: usuarioActual.proveedores
         ]
 
@@ -66,10 +66,10 @@ class PruebaUnoController {
         redirect (action: "index")
     }
 
-    def eliminarEvento(NombreEventoCommand cmd){
+    def eliminarEvento(IdEventoCommand cmd){
         Usuario usuarioActual = springSecurityService.currentUser
         //evento es null ! no lo esta encontrando
-        Evento evento = Evento.findByNombre(cmd.nombre)
+        Evento evento = Evento.get(cmd.evento)
         pruebaUnoService.eliminarEvento(usuarioActual, evento)
         redirect(action: "index")
     }

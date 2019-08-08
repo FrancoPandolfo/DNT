@@ -35,7 +35,7 @@
 
     <p>
         <g:select
-                name="eventos"
+                name="evento"
                 from="${eventos}"
                 optionKey="id"
                 optionValue="nombre"
@@ -58,7 +58,7 @@
 <g:form action="cargarProveedor">
     <p>
         <g:select
-                name="proveedores"
+                name="proveedor"
                 from="${proveedores}"
                 optionKey="id"
                 optionValue="nombre"
@@ -71,7 +71,7 @@
 <g:form action="quitarProveedor">
     <p>
         <g:select
-                name="proveedores"
+                name="proveedor"
                 from="${proveedores}"
                 optionKey="id"
                 optionValue="nombre"
